@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.capgemini.formation.formes.CalculateurDeSurface;
+import com.capgemini.formation.calculs.CalculateurDeSurfaces;
 import com.capgemini.formation.formes.Carre;
 import com.capgemini.formation.formes.Cercle;
 import com.capgemini.formation.formes.Rectangle;
 
 public  class CalculateurDeSurfaceTest {
 	private double precision = 0.00001;
-	private CalculateurDeSurface calculateurSurface = new CalculateurDeSurface();
+	private CalculateurDeSurfaces calculateurSurface = new CalculateurDeSurfaces();
 	
 	
 	@Test
@@ -43,5 +43,22 @@ public  class CalculateurDeSurfaceTest {
 		assertEquals(2*4, aire, precision);
 	}
 	
+	@Test
+	public void calculerPlusieursSurface(){
+		Object[] objets = new Object[3];
+		Carre carreDe2 = new Carre(2);
+		Cercle cercleDe2=  new Cercle(2);
+		Rectangle rectangleDe2Par4 = new Rectangle(2,4);
+
+		objets[0] = carreDe2;
+		objets[1] = cercleDe2;
+		objets[2] = rectangleDe2Par4;
+
+		double aire = calculateurSurface.calculeAire(objets);
+		assertEquals(2*2 + Math.PI*2*2 + 2*4, aire, precision);
+
+
+
+	}
 	
 }
